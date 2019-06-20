@@ -19,3 +19,6 @@
  */
 
 Encore\Admin\Form::forget(['map', 'editor']);
+
+//Viewのnamespaceを変更
+app('view')->prependNamespace('admin', resource_path('views/admin'));
