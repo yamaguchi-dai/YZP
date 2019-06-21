@@ -15,7 +15,7 @@ class MCustomerController extends AdminController
      *
      * @var string
      */
-    protected $title = '顧客';
+    protected $title = '顧客マスター';
 
     /**
      * Make a grid builder.

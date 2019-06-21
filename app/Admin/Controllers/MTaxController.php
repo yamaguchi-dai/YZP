@@ -2,20 +2,20 @@
 
 namespace App\Admin\Controllers;
 
-use App\Model\MItem;
+use App\Model\MTax;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
 
-class MItemController extends AdminController
+class MTaxController extends AdminController
 {
     /**
      * Title for current resource.
      *
      * @var string
      */
-    protected $title = '商品マスター';
+    protected $title = '税率マスター';
 
     /**
      * Make a grid builder.
@@ -24,11 +24,10 @@ class MItemController extends AdminController
      */
     protected function grid()
     {
-        $grid = new Grid(new MItem);
+        $grid = new Grid(new MTax);
 
         $grid->column('id', __('messages.Id'));
-        $grid->column('item_name', __('messages.Item name'));
-        $grid->column('default_price', __('messages.Default price'));
+        $grid->column('tax_rate', __('messages.Tax rate'));
         $grid->column('created_at', __('messages.Created at'));
         $grid->column('updated_at', __('messages.Updated at'));
 
@@ -43,11 +42,10 @@ class MItemController extends AdminController
      */
     protected function detail($id)
     {
-        $show = new Show(MItem::findOrFail($id));
+        $show = new Show(MTax::findOrFail($id));
 
         $show->field('id', __('messages.Id'));
-        $show->field('item_name', __('messages.Item name'));
-        $show->field('default_price', __('messages.Default price'));
+        $show->field('tax_rate', __('messages.Tax rate'));
         $show->field('created_at', __('messages.Created at'));
         $show->field('updated_at', __('messages.Updated at'));
 
@@ -61,10 +59,9 @@ class MItemController extends AdminController
      */
     protected function form()
     {
-        $form = new Form(new MItem);
+        $form = new Form(new MTax);
 
-        $form->text('item_name', __('messages.Item name'));
-        $form->number('default_price', __('messages.Default price'));
+        $form->decimal('tax_rate', __('messages.Tax rate'));
 
         return $form;
     }

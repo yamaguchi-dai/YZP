@@ -19,6 +19,6 @@ return [
     'Item name'=>'商品名',
     'Default price'=>'基本価格',
 
-
+    'Tax rate'=>'税率',
 
 ];

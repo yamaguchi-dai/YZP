@@ -15,5 +15,6 @@ Route::group([
     $router->resource('master/customer',\MCustomerController::class);
 
     $router->resource('master/item',\MItemController::class);
+    $router->resource('master/tax',\MTaxController::class);
 
 });
