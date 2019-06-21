@@ -14,5 +14,11 @@ return [
     'Address1' => '住所1',
     'Address2' => '住所2',
     'Created at' => '作成日',
-    'Updated at' => '更新日'
+    'Updated at' => '更新日',
+
+    'Item name'=>'商品名',
+    'Default price'=>'基本価格',
+
+
+
 ];
