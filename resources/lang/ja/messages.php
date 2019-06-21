@@ -21,4 +21,12 @@ return [
 
     'Tax rate'=>'税率',
 
+    'Kbn cd'=>'区分'
+    ,'Issue date'=>'発行日'
+    ,'m_customer'=>'顧客'
+
+    ,'item count'=>'個数'
+    ,'remark'=>'備考'
+
+
 ];
