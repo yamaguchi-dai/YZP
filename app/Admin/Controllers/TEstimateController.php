@@ -69,14 +69,14 @@ class TEstimateController extends AdminController {
         $form = new Form(new TEstimate);
         $form->tab(__('messages.slip'), function ($form) {
             //伝票
-            $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn'));
+            $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn'))->rules('required');
             $form->select('m_customer_id', __('messages.m_customer'))->options(function ($id) {
                 $customer = MCustomer::find($id);
                 if ($customer) {
                     return [$customer->id => $customer->customer_name];
                 }
-            })->ajax(route('api', ['api_name' => 'customer']));
-            $form->date('issue_date', __('messages.Issue date'))->default(date('Y-m-d'));
+            })->ajax(route('api', ['api_name' => 'customer']))->rules('required');
+            $form->date('issue_date', __('messages.Issue date'))->default(date('Y-m-d'))->rules('required');
         })->tab(__('messages.detail'), function ($form) {
             //明細
             $form->hasMany('detail', NULL, function (Form\NestedForm $detail_form) {
@@ -85,10 +85,11 @@ class TEstimateController extends AdminController {
                     if ($item) {
                         return [$item->id, $item->item_name];
                     }
-                })->ajax(route('api', ['api_name' => 'item']));
-                $detail_form->number('item_count', __('messages.item count'));
-                $detail_form->select('m_tax_id', __('messages.m_tax'))->options(Option::tax());
-                $detail_form->number('remark', __('messages.remark'));
+                })->ajax(route('api', ['api_name' => 'item']))->rules('required');
+                $detail_form->number('item_count', __('messages.item count'))->rules('required');
+                $detail_form->number('item_price', __('messages.item price'))->rules('required');
+                $detail_form->select('m_tax_id', __('messages.m_tax'))->options(Option::tax())->rules('required');
+                $detail_form->text('remark', __('messages.remark'));
             });
         });
         return $form;

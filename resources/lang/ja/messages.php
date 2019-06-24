@@ -28,6 +28,7 @@ return [
     ,'m_tax'=>'税率'
 
     ,'item count'=>'個数'
+    ,'item price'=>'価格'
     ,'remark'=>'備考'
     ,'slip'=>'伝票'
     ,'detail'=>'明細'
