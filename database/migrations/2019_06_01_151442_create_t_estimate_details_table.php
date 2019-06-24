@@ -17,7 +17,7 @@ class CreateTEstimateDetailsTable extends Migration
             $table->increments('id');
             $table->integer('t_estimate_id');
             $table->integer('m_tax_id');
-            $table->integer('item_name');
+            $table->integer('m_item_id');
             $table->integer('item_price');
             $table->integer('item_count');
             $table->integer('remark')->nullable();

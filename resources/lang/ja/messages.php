@@ -24,9 +24,12 @@ return [
     'Kbn cd'=>'区分'
     ,'Issue date'=>'発行日'
     ,'m_customer'=>'顧客'
+    ,'m_item'=>'商品'
+    ,'m_tax'=>'税率'
 
     ,'item count'=>'個数'
     ,'remark'=>'備考'
-
+    ,'slip'=>'伝票'
+    ,'detail'=>'明細'
 
 ];

@@ -2,7 +2,9 @@
 
 namespace App\Admin\Controllers;
 
+use App\Helper\Option;
 use App\Model\MCustomer;
+use App\Model\MItem;
 use App\Model\TEstimate;
 use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
@@ -65,7 +67,7 @@ class TEstimateController extends AdminController {
     protected function form() {
 
         $form = new Form(new TEstimate);
-        $form->tab('伝票', function ($form) {
+        $form->tab(__('messages.slip'), function ($form) {
             //伝票
             $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn'));
             $form->select('m_customer_id', __('messages.m_customer'))->options(function ($id) {
@@ -75,11 +77,18 @@ class TEstimateController extends AdminController {
                 }
             })->ajax(route('api', ['api_name' => 'customer']));
             $form->date('issue_date', __('messages.Issue date'))->default(date('Y-m-d'));
-        })->tab('明細', function ($form) {
+        })->tab(__('messages.detail'), function ($form) {
             //明細
             $form->hasMany('detail', NULL, function (Form\NestedForm $detail_form) {
-                $detail_form->number('item_count',__('messages.item count'));
-                $detail_form->number('remark',__('messages.remark'));
+                $detail_form->select('m_item_id', __('messages.m_item'))->options(function ($item_id) {
+                    $item = MItem::find($item_id);
+                    if ($item) {
+                        return [$item->id, $item->item_name];
+                    }
+                })->ajax(route('api', ['api_name' => 'item']));
+                $detail_form->number('item_count', __('messages.item count'));
+                $detail_form->select('m_tax_id', __('messages.m_tax'))->options(Option::tax());
+                $detail_form->number('remark', __('messages.remark'));
             });
         });
         return $form;
