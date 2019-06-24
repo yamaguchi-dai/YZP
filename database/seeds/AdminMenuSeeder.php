@@ -27,7 +27,9 @@ class AdminMenuSeeder extends Seeder {
             [11, 8, 3, "税率マスタ", "fa-credit-card", "master/tax", NULL],
 
             [20, 0, 2, "Service", "fa-file", NULL, NULL],
-            [21, 20, 2, "見積書", "fa-file", 'service/estimate', NULL],
+            [21, 20, 1, "見積書", "fa-file", 'service/estimate', NULL],
+            [22, 20, 2, "納品書", "fa-file", 'service/delivery', NULL],
+            [23, 20, 3, "請求書", "fa-file", 'service/invoice', NULL],
 
         ];
         foreach ($data_list as $data) {

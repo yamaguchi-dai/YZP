@@ -30,5 +30,7 @@ Route::group([
      */
     Route::prefix('service')->group(function (Router $router) {
         $router->resource('estimate', \TEstimateController::class);
+        $router->resource('delivery', \TDeliveryController::class);
+        $router->resource('invoice', \TInvoiceController::class);
     });
 });
