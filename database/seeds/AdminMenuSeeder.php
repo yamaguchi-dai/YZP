@@ -26,7 +26,7 @@ class AdminMenuSeeder extends Seeder {
             [10, 8, 2, "商品マスタ", "fa-barcode", "master/item", NULL],
             [11, 8, 3, "税率マスタ", "fa-credit-card", "master/tax", NULL],
 
-            [20, 0, 2, "Service", "fa-tasks", NULL, NULL],
+            [20, 0, 2, "Service", "fa-file", NULL, NULL],
             [21, 20, 2, "見積書", "fa-file", 'service/estimate', NULL],
 
         ];

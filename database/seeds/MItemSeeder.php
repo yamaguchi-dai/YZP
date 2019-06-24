@@ -11,7 +11,11 @@ class MItemSeeder extends Seeder {
     public function run() {
         DB::table('m_items')->truncate();
         $datas = [
-            ['1', '商品名1', '500',]
+            ['1', '商品名1', '100']
+            , ['2', '商品名2', '200']
+            , ['3', '商品名3', '300']
+            , ['4', '商品名4', '400']
+            , ['5', '商品名5', '500']
         ];
 
         foreach ($datas as $data) {
