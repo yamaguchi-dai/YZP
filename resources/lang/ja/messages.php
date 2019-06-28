@@ -32,5 +32,6 @@ return [
     ,'remark'=>'備考'
     ,'slip'=>'伝票'
     ,'detail'=>'明細'
+    ,'tax_included_price'=>'金額(税込)'
 
 ];

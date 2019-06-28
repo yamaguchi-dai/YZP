@@ -32,5 +32,6 @@ Route::group([
         $router->resource('estimate', \TEstimateController::class);
         $router->resource('delivery', \TDeliveryController::class);
         $router->resource('invoice', \TInvoiceController::class);
+        $router->resource('payment',\TPaymentController::class);
     });
 });
