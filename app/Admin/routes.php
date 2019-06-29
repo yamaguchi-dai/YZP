@@ -33,5 +33,7 @@ Route::group([
         $router->resource('delivery', \TDeliveryController::class);
         $router->resource('invoice', \TInvoiceController::class);
         $router->resource('payment',\TPaymentController::class);
+        $router->resource('receipt', \TReceiptController::class);
+
     });
 });

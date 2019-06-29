@@ -31,6 +31,7 @@ class AdminMenuSeeder extends Seeder {
             [22, 20, 2, "納品書", "fa-file", 'service/delivery', NULL],
             [23, 20, 3, "請求書", "fa-file", 'service/invoice', NULL],
             [24, 20, 4, "払込書", "fa-file", 'service/payment', NULL],
+            [25, 20, 5, "領収書", "fa-file", 'service/receipt', NULL],
 
 
         ];
