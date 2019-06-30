@@ -15,6 +15,7 @@ Route::group([
      * Api
      */
     $router->get('api/{api_name}','ApiController@index')->name('api');
+    $router->post('post_api/{api_name}', 'ApiController@index')->name('post_api');
 
     /**
      * マスタ

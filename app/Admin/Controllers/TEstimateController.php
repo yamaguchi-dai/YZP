@@ -2,6 +2,7 @@
 
 namespace App\Admin\Controllers;
 
+use App\Admin\Extensions\Tools\CreateDeliveryBatchAction;
 use App\Helper\Option;
 use App\Model\MCustomer;
 use App\Model\MItem;
@@ -10,7 +11,6 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
-use Encore\Admin\Widgets\Tab;
 
 class TEstimateController extends AdminController {
     /**
@@ -36,6 +36,13 @@ class TEstimateController extends AdminController {
         $grid->column('issue_date', __('messages.Issue date'));
         $grid->column('created_at', __('messages.Created at'));
         $grid->column('updated_at', __('messages.Updated at'));
+
+        $grid->tools(function (Grid\Tools $tools) {
+            $tools->batch(function (Grid\Tools\BatchActions $batch) {
+                $batch->add('納品書一括作成', new CreateDeliveryBatchAction(config('kbn.file_type.estimate')));
+            });
+        });
+
 
         return $grid;
     }
@@ -69,7 +76,7 @@ class TEstimateController extends AdminController {
         $form = new Form(new TEstimate);
         $form->tab(__('messages.slip'), function ($form) {
             //伝票
-            $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn'))->rules('required');
+            $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn.kbn_type'))->rules('required');
             $form->select('m_customer_id', __('messages.m_customer'))->options(function ($id) {
                 $customer = MCustomer::find($id);
                 if ($customer) {

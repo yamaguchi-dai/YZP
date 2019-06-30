@@ -99,4 +99,5 @@ return [
         'filter_placeholder' => 'フィルタ',
     ],
     'menu_titles'           => [],
+    'grid_items_selected' => '一括操作'
 ];

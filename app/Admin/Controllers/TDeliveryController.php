@@ -71,7 +71,7 @@ class TDeliveryController extends AdminController
         $form = new Form(new TDelivery);
         $form->tab(__('messages.slip'), function ($form) {
             //伝票
-            $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn'))->rules('required');
+            $form->radio('kbn_cd', __('messages.Kbn cd'))->options(config('kbn.kbn_type'))->rules('required');
             $form->select('m_customer_id', __('messages.m_customer'))->options(function ($id) {
                 $customer = MCustomer::find($id);
                 if ($customer) {
