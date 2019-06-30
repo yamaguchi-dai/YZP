@@ -18,7 +18,7 @@ class CreateDeliveryBatchAction extends BatchAction {
     public function script() {
 
         $url = route('post_api', ['api_name' => 'create_delivery_batch_action']);
-        return <<<EOT
+        return <<<JS
 
 $('{$this->getElementClass()}').on('click', function() {
 
@@ -37,7 +37,7 @@ $('{$this->getElementClass()}').on('click', function() {
     });
 });
 
-EOT;
+JS;
 
     }
 
