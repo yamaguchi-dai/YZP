@@ -8,7 +8,9 @@ use App\Http\Controllers\Controller;
 use App\Model\MCustomer;
 use App\Model\MItem;
 use App\Model\TDelivery;
+use App\Model\TDeliveryDetail;
 use App\Model\TEstimate;
+use App\Model\TEstimateDetail;
 use Illuminate\Http\Request;
 
 class ApiController extends Controller {
@@ -45,6 +47,18 @@ class ApiController extends Controller {
                     $delivery->m_customer_id = $estimate->m_customer_id;
                     $delivery->issue_date = $estimate->issue_date;
                     $delivery->save();
+
+                    /** @var TEstimateDetail $estimateDetail */
+                    foreach (TEstimateDetail::where('t_estimate_id', $id)->get() as $estimateDetail) {
+                        $delivery_detail = new TDeliveryDetail();
+                        $delivery_detail->t_delivery_id = $delivery->id;
+                        $delivery_detail->m_tax_id = $estimateDetail->m_tax_id;
+                        $delivery_detail->m_item_id = $estimateDetail->m_item_id;
+                        $delivery_detail->item_price = $estimateDetail->item_price;
+                        $delivery_detail->item_count = $estimateDetail->item_count;
+                        $delivery_detail->remark = $estimateDetail->remark;
+                        $delivery_detail->save();
+                    }
                     break;
             }
         }
