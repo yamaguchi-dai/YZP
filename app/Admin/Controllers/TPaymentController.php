@@ -28,6 +28,7 @@ class TPaymentController extends AdminController
         $grid = new Grid(new TPayment);
 
         $grid->column('id', __('messages.Id'));
+        $grid->column('kbn_cd', __('messages.Kbn cd'))->using(config('kbn.kbn_type'));
         $grid->column('m_customer_id', __('messages.m_customer'));
         $grid->column('tax_included_price', __('messages.tax_included_price'));
         $grid->column('created_at', __('messages.Created at'));

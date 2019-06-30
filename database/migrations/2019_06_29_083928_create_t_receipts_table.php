@@ -13,6 +13,7 @@ class CreateTReceiptsTable extends Migration {
     public function up() {
         Schema::create('t_receipts', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('kbn_cd');
             $table->integer('m_customer_id');
             $table->integer('tax_included_price');
             $table->timestamps();

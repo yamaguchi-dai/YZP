@@ -15,6 +15,7 @@ class CreateTPaymentsTable extends Migration
     {
         Schema::create('t_payments', function (Blueprint $table) {
             $table->increments('id');
+            $table->integer('kbn_cd');
             $table->integer('m_customer_id');
             $table->integer('tax_included_price');
             $table->timestamps();

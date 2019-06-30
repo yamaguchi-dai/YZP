@@ -29,7 +29,7 @@ class TEstimateController extends AdminController {
         $grid = new Grid(new TEstimate);
 
         $grid->column('id', __('messages.Id'));
-        $grid->column('kbn_cd', __('messages.Kbn cd'));
+        $grid->column('kbn_cd', __('messages.Kbn cd'))->using(config('kbn.kbn_type'));
         $grid->column('m_customer_id', __('messages.m_customer'))->display(function ($customer_id) {
             return MCustomer::find($customer_id)->customer_name;
         });
