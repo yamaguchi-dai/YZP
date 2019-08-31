@@ -21,20 +21,21 @@ Route::group([
      * マスタ
      */
     Route::prefix('master')->group(function (Router $router) {
-        $router->resource('customer', \MCustomerController::class);
-        $router->resource('item', \MItemController::class);
-        $router->resource('tax', \MTaxController::class);
+        $router->resource('customer', MCustomerController::class);
+        $router->resource('item', MItemController::class);
+        $router->resource('tax', MTaxController::class);
     });
 
     /**
      * 業務
      */
     Route::prefix('service')->group(function (Router $router) {
-        $router->resource('estimate', \TEstimateController::class);
-        $router->resource('delivery', \TDeliveryController::class);
-        $router->resource('invoice', \TInvoiceController::class);
-        $router->resource('payment',\TPaymentController::class);
-        $router->resource('receipt', \TReceiptController::class);
+        $router->resource('estimate', TEstimateController::class);
+        $router->get('estimate/pdf/{id}', 'TEstimateController@pdf')->name('estimate_pdf');
+        $router->resource('delivery', TDeliveryController::class);
+        $router->resource('invoice', TInvoiceController::class);
+        $router->resource('payment', TPaymentController::class);
+        $router->resource('receipt', TReceiptController::class);
 
     });
 });

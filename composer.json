@@ -1,4 +1,10 @@
 {
+    "repositories": [
+        {
+            "type": "path",
+            "url": "extensions/yamaguchi-dai/laravel-pdf"
+        }
+    ],
     "name": "laravel/laravel",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
@@ -9,7 +15,9 @@
         "encore/laravel-admin": "^1.7",
         "fideloper/proxy": "~3.3",
         "laravel/framework": "5.5.*",
-        "laravel/tinker": "~1.0"
+        "laravel/tinker": "~1.0",
+        "tecnickcom/tcpdf": "^6.2",
+        "yamaguchi-dai/laravel-pdf": "^1.0"
     },
     "require-dev": {
       "barryvdh/laravel-ide-helper": "^2.6",

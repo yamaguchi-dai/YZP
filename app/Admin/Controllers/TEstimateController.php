@@ -11,8 +11,10 @@ use Encore\Admin\Controllers\AdminController;
 use Encore\Admin\Form;
 use Encore\Admin\Grid;
 use Encore\Admin\Show;
+use Laravel\Pdf\Pdf;
 
 class TEstimateController extends AdminController {
+
     /**
      * Title for current resource.
      *
@@ -20,12 +22,22 @@ class TEstimateController extends AdminController {
      */
     protected $title = '見積書';
 
+    function pdf($id) {
+        $pdf = new Pdf();
+        $path = $pdf->create();
+        return response()->download($path, '見積書_' . $id . '.pdf')->deleteFileAfterSend(TRUE);
+    }
+
     /**
      * Make a grid builder.
      *
      * @return Grid
      */
     protected function grid() {
+
+        $pdf = new Pdf();
+        $pdf->create();
+
         $grid = new Grid(new TEstimate);
 
         $grid->column('id', __('messages.Id'));
@@ -36,6 +48,12 @@ class TEstimateController extends AdminController {
         $grid->column('issue_date', __('messages.Issue date'));
         $grid->column('created_at', __('messages.Created at'));
         $grid->column('updated_at', __('messages.Updated at'));
+        $grid->actions(function (Grid\Displayers\Actions $actions) {
+            $actions->disableDelete();
+            if ($this->row->is_fixed) {
+                $actions->append('<a target="_blank" href="' . route('estimate_pdf', ['id' => $this->row->id]) . '"><i class="fa fa-download"></i><span></span></a>');
+            }
+        });
 
         $grid->tools(function (Grid\Tools $tools) {
             $tools->batch(function (Grid\Tools\BatchActions $batch) {
