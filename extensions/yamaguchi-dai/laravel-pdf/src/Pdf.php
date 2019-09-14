@@ -15,7 +15,7 @@ class Pdf {
 
     function create() {
         $this->pdf->writeHTML('<h1>TEST</h1>');
-        $path = public_path('ooo.pdf');
+        $path = public_path(microtime(TRUE));
         $this->pdf->Output($path, 'F');
         return $path;
     }
